@@ -1,0 +1,20 @@
+{
+  "name": "favorite-fonts",
+  "version": "1.0.0",
+  "description": "Chingu Solo Project for Tier 3 Voyage",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ziggysauce/favorite-fonts.git"
+  },
+  "author": "Dan Nguyen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ziggysauce/favorite-fonts/issues"
+  },
+  "homepage": "https://github.com/ziggysauce/favorite-fonts#readme"
+}
