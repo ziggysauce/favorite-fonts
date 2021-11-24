@@ -7,7 +7,11 @@ class Footer extends React.Component {
   }
 
   render() {
-    return <div>Footer goes here!</div>;
+    return (
+      <div className="w-100 border">
+        <h1 className="py-3">Footer goes here!</h1>
+      </div>
+    );
   }
 }
 
