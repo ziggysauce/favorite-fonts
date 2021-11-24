@@ -16,15 +16,21 @@ class App extends React.Component {
   };
 
   callBackendAPI = async () => {
-    const response = await fetch('/api');
-    console.log('THE RESPONSE: ', response);
-    const body = await response.json();
-    console.log('THE BODY: ', body);
+    try {
+      const response = await fetch('/api');
+      console.log('THE RESPONSE: ', response);
+      const body = await response.json();
+      console.log('THE BODY: ', body);
 
-    if (response.status !== 200) {
-      throw Error(body.message);
+      if (response.status !== 200) {
+        throw Error(body.message);
+      }
+
+      return body;
+    } catch (error) {
+      console.log('AN ERROR OCCURRED: ', error);
+      throw new Error();
     }
-    return body;
   };
 
   render() {
@@ -43,7 +49,11 @@ class App extends React.Component {
           >
             Learn React
           </a>
-          <button type="button" onClick={this.doSomething}>
+          <button
+            className="btn btn-primary my-2"
+            type="button"
+            onClick={this.doSomething}
+          >
             CLICK ME
           </button>
         </header>
