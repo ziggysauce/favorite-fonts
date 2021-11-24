@@ -1,21 +1,19 @@
+/* eslint-disable react/no-unused-state */
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 class App extends React.Component {
-  state = {data: null};
-
-  // componentDidMount() {
-  //   this.callBackendAPI()
-  //     .then(res => this.setState({ data: res.express }))
-  //     .catch(err => console.log(err));
-  // }
+  constructor(props) {
+    super(props);
+    this.state = { data: null };
+  }
 
   doSomething = async () => {
     this.callBackendAPI()
-      .then(res => this.setState({ data: res.express }))
-      .catch(err => console.log(err));
-  }
+      .then((res) => this.setState({ data: res.express }))
+      .catch((err) => console.log(err));
+  };
 
   callBackendAPI = async () => {
     const response = await fetch('/api');
@@ -24,7 +22,7 @@ class App extends React.Component {
     console.log('THE BODY: ', body);
 
     if (response.status !== 200) {
-      throw Error(body.message) 
+      throw Error(body.message);
     }
     return body;
   };
@@ -45,7 +43,9 @@ class App extends React.Component {
           >
             Learn React
           </a>
-          <button onClick={this.doSomething}>CLICK ME</button>
+          <button type="button" onClick={this.doSomething}>
+            CLICK ME
+          </button>
         </header>
       </div>
     );
