@@ -1,4 +1,6 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRedo } from '@fortawesome/free-solid-svg-icons';
 
 class Navbar extends React.Component {
   constructor(props) {
@@ -15,7 +17,7 @@ class Navbar extends React.Component {
           <p className="mb-0">Size</p>
           <p className="mb-0">Theme Mode</p>
           <p className="mb-0">More</p>
-          <p className="mb-0">Refresh</p>
+          <FontAwesomeIcon icon={faRedo} />
         </div>
       </div>
     );
