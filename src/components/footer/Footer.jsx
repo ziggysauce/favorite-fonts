@@ -9,7 +9,18 @@ class Footer extends React.Component {
   render() {
     return (
       <div className="w-100 border">
-        <h1 className="py-3">Footer goes here!</h1>
+        <p className="mb-0 py-4">
+          Coded by
+          <a
+            href="https://github.com/ziggysauce"
+            className="px-1"
+            target="_blank"
+            rel="noreferrer"
+          >
+            ziggysauce
+          </a>
+          | 2021 | Chingu Solo Project
+        </p>
       </div>
     );
   }
