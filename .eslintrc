@@ -23,6 +23,9 @@
   "rules": {
     "semi": 0,
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/forbid-prop-types": 0,
+    "react/require-default-props": "off",
+    "react/prop-types": "off",
     "prettier/prettier": [
       "error", {
         "semi": true,

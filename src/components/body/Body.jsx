@@ -36,7 +36,7 @@ class Footer extends React.Component {
       <div className="w-100 h-100 border">
         <h1 className="py-3">Body! goes here!</h1>
         <button
-          className="btn btn-primary my-2"
+          className="btn btn-outline-primary my-2"
           type="button"
           onClick={this.doSomething}
         >

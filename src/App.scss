@@ -1,0 +1,44 @@
+.dark-mode {
+  transition: 0.3s ease-in-out;
+  background-color: #202124;
+  color: #E7EAED;
+
+  a,
+  input:focus::-webkit-input-placeholder {
+    transition: 0.3s ease-in-out;
+    color: #87AFF1;
+  }
+
+  a {
+    transition: 0.3s ease-in-out;
+    text-decoration: none;
+  }
+  a:hover {
+    transition: 0.3s ease-in-out;
+    text-decoration: underline;
+    color: #87AFF1;
+  }
+
+  select, input {
+    transition: 0.3s ease-in-out;
+    background-color: #202124;
+    color: #E7EAED;
+  }
+
+  input::-webkit-input-placeholder {
+    transition: 0.3s ease-in-out;
+    color: #E7EAED;
+  }
+
+  .btn-outline-primary {
+    transition: 0.3s ease-in-out;
+    color: #87AFF1;
+    border-color: #87AFF1;
+  }
+  .btn-outline-primary:hover {
+    transition: 0.3s ease-in-out;
+    background-color: rgba(138,180,248,.04);
+    color: #D2E3FC;
+    border-color: #87AFF1;
+  }
+}
