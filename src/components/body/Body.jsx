@@ -8,14 +8,17 @@ class Footer extends React.Component {
   }
 
   doSomething = async () => {
-    this.callBackendAPI()
-      .then((res) => this.setState({ data: res.express }))
-      .catch((err) => console.log(err));
+    const { data } = await this.callBackendAPI();
+    // this.callBackendAPI()
+    //   .then((res) => this.setState({ data: res.express }))
+    //   .catch((err) => console.log(err));
+    this.setState({ data });
+    console.log('STATE: ', { data });
   };
 
   callBackendAPI = async () => {
     try {
-      const response = await fetch('/api');
+      const response = await fetch('/api/fonts');
       console.log('THE RESPONSE: ', response);
       const body = await response.json();
       console.log('THE BODY: ', body);
@@ -32,6 +35,7 @@ class Footer extends React.Component {
   };
 
   render() {
+    const { data } = this.state;
     return (
       <div className="w-100 h-100 border">
         <h1 className="py-3">Body! goes here!</h1>
@@ -42,6 +46,19 @@ class Footer extends React.Component {
         >
           CLICK ME
         </button>
+        {data &&
+          data.length &&
+          data.map((f) => {
+            const divStyle = {
+              color: 'blue',
+              fontFamily: `url(${f.files[100]})`,
+            };
+            return (
+              <div key={f.family} style={divStyle}>
+                This is some test font
+              </div>
+            );
+          })}
       </div>
     );
   }
