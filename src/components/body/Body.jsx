@@ -17,25 +17,38 @@ class Footer extends React.Component {
   };
 
   callBackendAPI = async () => {
+    let body = { data: null };
     try {
       const response = await fetch('/api/fonts');
       console.log('THE RESPONSE: ', response);
-      const body = await response.json();
+      body = await response.json();
       console.log('THE BODY: ', body);
 
       if (response.status !== 200) {
+        console.error('Oh no. Bad status returned!');
         throw Error(body.message);
       }
-
-      return body;
     } catch (error) {
       console.log('AN ERROR OCCURRED: ', error);
-      throw new Error();
+      console.error("Oops! It looks like the server isn't setup... awko taco");
     }
+    return body;
   };
 
   render() {
     const { data } = this.state;
+    if (data && data.length) {
+      data.forEach((font) => {
+        const apiUrl = [];
+        apiUrl.push('https://fonts.googleapis.com/css?family=');
+        apiUrl.push(font.family.replace(/ /g, '+'));
+        const url = apiUrl.join('');
+        const fontLink = document.createElement('link');
+        fontLink.rel = 'stylesheet';
+        fontLink.href = url;
+        document.head.appendChild(fontLink);
+      });
+    }
     return (
       <div className="w-100 h-100 border">
         <h1 className="py-3">Body! goes here!</h1>
@@ -44,14 +57,14 @@ class Footer extends React.Component {
           type="button"
           onClick={this.doSomething}
         >
-          CLICK ME
+          Fetch Google Font Data
         </button>
         {data &&
           data.length &&
           data.map((f) => {
             const divStyle = {
               color: 'blue',
-              fontFamily: `url(${f.files[100]})`,
+              fontFamily: `${f.family}, sans-serif`,
             };
             return (
               <div key={f.family} style={divStyle}>
