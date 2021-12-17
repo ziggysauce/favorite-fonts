@@ -59,7 +59,10 @@ class Navbar extends React.Component {
         <div className="d-flex m-3 border rounded-pill">
           <div className="p-3 border-end col-3">
             <div className="d-flex justify-content-center align-items-center h-100 w-100">
-              <FontAwesomeIcon className="fa-icon" icon={faSearch} />
+              <FontAwesomeIcon
+                className="fa-icon cursor-pointer"
+                icon={faSearch}
+              />
               <input
                 value={searchFont}
                 placeholder="Search fonts"
@@ -73,7 +76,7 @@ class Navbar extends React.Component {
               <div className="d-flex justify-content-center align-items-center h-100 w-100">
                 <select
                   value={previewType}
-                  className="border-0 outline-0"
+                  className="border-0 outline-0 cursor-pointer"
                   aria-label="Text preview select"
                   onChange={onSelectPreviewTextType}
                 >
@@ -96,7 +99,7 @@ class Navbar extends React.Component {
             <div className="d-flex justify-content-center align-items-center h-100 w-100">
               <select
                 value={`${fontSize}`}
-                className="border-0 outline-0"
+                className="border-0 outline-0 cursor-pointer"
                 aria-label="Font size select"
                 onChange={onSelectFontSize}
               >

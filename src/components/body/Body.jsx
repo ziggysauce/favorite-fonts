@@ -17,47 +17,6 @@ class Footer extends React.Component {
     this.initiateAPIFetch();
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log('SHOULD COMPONENT UPDATE: ', { nextProps, nextState });
-    const {
-      parentState: { searchFont },
-    } = nextProps;
-    let filteredData = [];
-    if (searchFont.length) {
-      const { data } = nextState;
-      filteredData = data.filter((f) =>
-        f.family.toLowerCase().includes(searchFont.toLowerCase())
-      );
-      console.log('FILTERED DATA: ', { searchFont, filteredData });
-    }
-    // if (
-    //   JSON.stringify(nextState.filteredData) !== JSON.stringify(filteredData)
-    // ) {
-    //   // Only update state if array is different
-    //   this.setState({ filteredData });
-    // }
-    return true;
-  }
-
-  // onCheckForSearchFont(searchFont, initialData) {
-  //   console.log('SHOULD COMPONENT UPDATE 2: ', {
-  //     searchFont,
-  //     state: this.state,
-  //   });
-  //   const { data } = this.state;
-  //   let filteredData = data;
-  //   if (searchFont.length) {
-  //     filteredData = data.filter((f) =>
-  //       f.family.toLowerCase().includes(searchFont.toLowerCase())
-  //     );
-  //     console.log('FILTERED DATA 2: ', this.boo, { searchFont, filteredData });
-  //   }
-  //   if (JSON.stringify(initialData) !== JSON.stringify(filteredData)) {
-  //     // Only update state if array is different
-  //     this.setState({ filteredData });
-  //   }
-  // }
-
   initiateAPIFetch = async () => {
     const { data } = await this.callBackendAPI();
     if (data && data.length) {
@@ -105,22 +64,20 @@ class Footer extends React.Component {
       filteredData = data.filter((f) =>
         f.family.toLowerCase().includes(searchFont.toLowerCase())
       );
+      console.log('DA DATA: ', filteredData);
     }
     return (
       <div className="w-100 h-100">
         {data && data.length && (
           <div className="pb-2 pt-4 px-3 w-100 text-start">
             <small>
-              Displaying{' '}
-              {filteredData.length ? `${filteredData.length} of ` : ''}
-              {data.length} families.
+              Displaying {filteredData.length} of {data.length} families.
             </small>
           </div>
         )}
-        <div className="d-flex flex-wrap">
-          {filteredData &&
-            filteredData.length &&
-            filteredData.map((f) => {
+        {filteredData && filteredData.length ? (
+          <div className="d-flex flex-wrap">
+            {filteredData.map((f) => {
               const fontStyle = {
                 fontFamily: `${f.family}, sans-serif`,
                 fontSize: `${fontSize}px`,
@@ -136,13 +93,14 @@ class Footer extends React.Component {
                   <div className="card h-100 p-3 d-flex flex-column align-items-start">
                     <h5 className="mb-0 pb-3">{f.family}</h5>
                     <p className="mb-0 text-start text-break" style={fontStyle}>
-                      {previewText}
+                      {previewText || 'Type something...'}
                     </p>
                   </div>
                 </LazyLoad>
               );
             })}
-        </div>
+          </div>
+        ) : null}
       </div>
     );
   }
