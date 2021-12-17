@@ -47,7 +47,7 @@ class Navbar extends React.Component {
       '280',
     ];
     return (
-      <div className="px-4">
+      <div className="sticky-top px-4 py-2 border-bottom bg-body">
         <div className="d-flex m-3 border rounded-pill">
           <div className="p-3 border-end col-3">
             <div className="d-flex justify-content-center align-items-center h-100 w-100">

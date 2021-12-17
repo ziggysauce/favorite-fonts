@@ -2,6 +2,7 @@
 /* eslint-disable react/no-unused-state */
 import React from 'react';
 import classNames from 'classnames';
+import LazyLoad from 'react-lazyload';
 
 class Footer extends React.Component {
   constructor(props) {
@@ -56,7 +57,7 @@ class Footer extends React.Component {
       });
     }
     return (
-      <div className="w-100 h-100 border">
+      <div className="w-100 h-100">
         {data && data.length && (
           <div className="pb-2 pt-4 px-3 w-100 text-start">
             <small>Displaying {data.length} fonts.</small>
@@ -71,7 +72,7 @@ class Footer extends React.Component {
                 fontSize: `${fontSize}px`,
               };
               return (
-                <div
+                <LazyLoad
                   key={f.family.replace(/ /g, '-')}
                   className={classNames(
                     { 'p-3 col-12': true },
@@ -84,7 +85,7 @@ class Footer extends React.Component {
                       {previewText}
                     </p>
                   </div>
-                </div>
+                </LazyLoad>
               );
             })}
         </div>
