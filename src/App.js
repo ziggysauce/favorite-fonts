@@ -14,18 +14,29 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      searchFont: '',
       previewType: 'Custom',
       previewText: 'Almost before we knew it, we had left the ground.',
       fontSize: 40,
       darkMode: false,
       gridMode: true,
     };
+    this.onSearchFont = this.onSearchFont.bind(this);
     this.onSelectPreviewTextType = this.onSelectPreviewTextType.bind(this);
     this.onChangeTextPreview = this.onChangeTextPreview.bind(this);
     this.onSelectFontSize = this.onSelectFontSize.bind(this);
     this.onToggleDarkMode = this.onToggleDarkMode.bind(this);
     this.onToggleGridMode = this.onToggleGridMode.bind(this);
     this.onReset = this.onReset.bind(this);
+  }
+
+  /**
+   * @description Changes the font search term
+   * @param {Event} e
+   */
+  onSearchFont(e) {
+    const searchFont = e.target.value;
+    this.setState({ searchFont });
   }
 
   /**
@@ -95,6 +106,7 @@ class App extends React.Component {
    */
   onReset() {
     this.setState({
+      searchFont: '',
       previewType: 'Custom',
       previewText: 'Almost before we knew it, we had left the ground.',
       fontSize: 40,
@@ -113,6 +125,7 @@ class App extends React.Component {
         <Header parentState={this.state} />
         <Navbar
           parentState={this.state}
+          onSearchFont={this.onSearchFont}
           onSelectPreviewTextType={this.onSelectPreviewTextType}
           onChangeTextPreview={this.onChangeTextPreview}
           onSelectFontSize={this.onSelectFontSize}

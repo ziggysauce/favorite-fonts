@@ -17,7 +17,15 @@ class Navbar extends React.Component {
 
   render() {
     const {
-      parentState: { previewType, previewText, fontSize, darkMode, gridMode },
+      parentState: {
+        searchFont,
+        previewType,
+        previewText,
+        fontSize,
+        darkMode,
+        gridMode,
+      },
+      onSearchFont,
       onSelectPreviewTextType,
       onChangeTextPreview,
       onSelectFontSize,
@@ -53,8 +61,10 @@ class Navbar extends React.Component {
             <div className="d-flex justify-content-center align-items-center h-100 w-100">
               <FontAwesomeIcon className="fa-icon" icon={faSearch} />
               <input
+                value={searchFont}
                 placeholder="Search fonts"
                 className="border-0 outline-0 mx-2 w-100"
+                onChange={onSearchFont}
               />
             </div>
           </div>
