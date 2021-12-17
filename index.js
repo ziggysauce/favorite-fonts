@@ -23,8 +23,7 @@ app.get('/api/fonts', async (req, res) => {
   let data = [];
   try {
     const response = await fetch(fetchUrl);
-    const json = await response.json();
-    data = json.items.slice(0, 10); // Just grab first 10 for now
+    ({ items: data } = await response.json());
   } catch (error) {
     console.log('THE ERROR: ', error);
     res.sendStatus(400);
