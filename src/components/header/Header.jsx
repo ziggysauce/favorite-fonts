@@ -8,7 +8,7 @@ class Header extends React.Component {
 
   render() {
     return (
-      <div className="w-100 border p-4 d-flex justify-content-between align-items-center">
+      <div className="w-100 border-bottom p-4 d-flex justify-content-between align-items-center">
         <a
           href="https://fonts.google.com"
           target="_blank"

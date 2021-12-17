@@ -19,10 +19,10 @@
     color: #87AFF1;
   }
 
-  select, input {
+  select, input, .fa-icon, .bg-body {
     transition: 0.3s ease-in-out;
-    background-color: #202124;
-    color: #E7EAED;
+    background-color: #202124 !important;
+    color: #E7EAED !important;
   }
 
   input::-webkit-input-placeholder {
@@ -40,5 +40,12 @@
     background-color: rgba(138,180,248,.04);
     color: #D2E3FC;
     border-color: #87AFF1;
+  }
+
+  .card {
+    background-color: transparent;
+    color: #E8EAED;
+    border: 1px solid #5f6368;
+    border-radius: 8px;
   }
 }

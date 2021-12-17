@@ -8,7 +8,7 @@ class Footer extends React.Component {
 
   render() {
     return (
-      <div className="w-100 border">
+      <div className="w-100 border-top">
         <p className="mb-0 py-4">
           Coded by
           <a
