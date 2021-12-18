@@ -14,6 +14,6 @@ To run this app locally, you'll need a Google Fonts API Key [here](https://devel
 - Start your local react app with `npm run dev`
 
 ## References
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-See [README.cra.md](https://github.com/ziggysauce/favorite-fonts/blob/main/README.cra.md).
-Original Chingu Solor Project [REPO](https://github.com/chingu-voyages/soloproject-tier3-favfonts)
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).  
+See [README.cra.md](https://github.com/ziggysauce/favorite-fonts/blob/main/README.cra.md).  
+Original Chingu Solor Project [REPO](https://github.com/chingu-voyages/soloproject-tier3-favfonts).  
