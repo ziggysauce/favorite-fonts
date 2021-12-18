@@ -1,19 +1,27 @@
-/* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/no-unused-state */
+
 import React from 'react';
 import './App.css';
 import './App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import classNames from 'classnames';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 import Navbar from './components/navigation/Navbar';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import Body from './components/body/Body';
 
+/**
+ * @description Scrolls to the top of the window
+ */
+const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      showScrollButton: false,
       searchFont: '',
       previewType: 'Custom',
       previewText: 'Almost before we knew it, we had left the ground.',
@@ -21,6 +29,7 @@ class App extends React.Component {
       darkMode: false,
       gridMode: true,
     };
+    this.scrollToTop = scrollToTop;
     this.onSearchFont = this.onSearchFont.bind(this);
     this.onSelectPreviewTextType = this.onSelectPreviewTextType.bind(this);
     this.onChangeTextPreview = this.onChangeTextPreview.bind(this);
@@ -28,6 +37,16 @@ class App extends React.Component {
     this.onToggleDarkMode = this.onToggleDarkMode.bind(this);
     this.onToggleGridMode = this.onToggleGridMode.bind(this);
     this.onReset = this.onReset.bind(this);
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 500) {
+        this.setState({ showScrollButton: true });
+      } else {
+        this.setState({ showScrollButton: false });
+      }
+    });
   }
 
   /**
@@ -114,7 +133,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { darkMode } = this.state;
+    const { showScrollButton, darkMode } = this.state;
     return (
       <div
         className={classNames(
@@ -122,8 +141,9 @@ class App extends React.Component {
           { 'dark-mode': darkMode }
         )}
       >
-        <Header parentState={this.state} />
+        <Header />
         <Navbar
+          // Passing in the whole state like this probably isn't a great idea but ¯\_(ツ)_/¯
           parentState={this.state}
           onSearchFont={this.onSearchFont}
           onSelectPreviewTextType={this.onSelectPreviewTextType}
@@ -134,7 +154,20 @@ class App extends React.Component {
           onReset={this.onReset}
         />
         <Body parentState={this.state} />
-        <Footer parentState={this.state} />
+        <Footer />
+        {showScrollButton && (
+          <button
+            className="scroll-up-button"
+            type="button"
+            onClick={this.scrollToTop}
+          >
+            <FontAwesomeIcon
+              className="fa-icon cursor-pointer muted"
+              icon={faArrowUp}
+              size="lg"
+            />
+          </button>
+        )}
       </div>
     );
   }

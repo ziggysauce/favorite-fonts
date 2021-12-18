@@ -60,7 +60,7 @@ class Navbar extends React.Component {
           <div className="p-3 border-end col-3">
             <div className="d-flex justify-content-center align-items-center h-100 w-100">
               <FontAwesomeIcon
-                className="fa-icon cursor-pointer"
+                className="fa-icon muted cursor-pointer"
                 icon={faSearch}
               />
               <input
@@ -118,7 +118,7 @@ class Navbar extends React.Component {
               className="d-flex justify-content-center align-items-center h-100 w-100 bg-transparent border-0 outline-0"
             >
               <FontAwesomeIcon
-                className="fa-icon"
+                className="fa-icon muted"
                 icon={darkMode ? faMoon : faSun}
               />
             </button>
@@ -130,7 +130,7 @@ class Navbar extends React.Component {
               className="d-flex justify-content-center align-items-center h-100 w-100 bg-transparent border-0 outline-0"
             >
               <FontAwesomeIcon
-                className="fa-icon"
+                className="fa-icon muted"
                 icon={gridMode ? faGripHorizontal : faListUl}
               />
             </button>
@@ -141,7 +141,7 @@ class Navbar extends React.Component {
               type="button"
               className="d-flex justify-content-center align-items-center h-100 w-100 bg-transparent border-0 outline-0"
             >
-              <FontAwesomeIcon className="fa-icon" icon={faRedo} />
+              <FontAwesomeIcon className="fa-icon muted" icon={faRedo} />
             </button>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import GoogleLogo from '../../Google_Fonts_logo.svg';
 
 class Header extends React.Component {
   constructor(props) {
@@ -15,7 +16,11 @@ class Header extends React.Component {
           rel="noreferrer"
           className="m-0 px-1"
         >
-          Google Fonts
+          <img
+            src={GoogleLogo}
+            className="google-font-logo"
+            alt="Google Fonts logo"
+          />
         </a>
         <div className="d-flex">
           <a
@@ -34,7 +39,6 @@ class Header extends React.Component {
           >
             Featured
           </a>
-          <p className="m-0 px-1">Articles</p>
           <a
             href="https://fonts.google.com/about"
             target="_blank"

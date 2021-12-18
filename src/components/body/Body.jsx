@@ -8,6 +8,7 @@ class Footer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      loading: true,
       data: null,
       filteredData: [],
     };
@@ -17,6 +18,11 @@ class Footer extends React.Component {
     this.initiateAPIFetch();
   }
 
+  /**
+   * @description Begins the backend API call  logic
+   * If applicable, retrieves the google fonts API data
+   * and adds stylesheets for each font family
+   */
   initiateAPIFetch = async () => {
     const { data } = await this.callBackendAPI();
     if (data && data.length) {
@@ -31,26 +37,26 @@ class Footer extends React.Component {
         document.head.appendChild(fontLink);
       });
     }
-    this.setState({ data });
-    console.log('STATE: ', { data });
+    this.setState({ data, loading: false });
   };
 
+  /**
+   * @description Fetches backend API data
+   */
   callBackendAPI = async () => {
     let body = { data: null };
     try {
       const response = await fetch('/api/fonts');
-      body = await response.json();
-
+      if (response) {
+        body = await response.json();
+      }
       if (response.status !== 200) {
-        console.alert('Oh no. Bad status returned!');
         throw Error(body.message);
       }
     } catch (error) {
+      // Silently fail
       console.log('AN ERROR OCCURRED: ', error);
-      console.alert("Oops! It looks like the server isn't setup... awko taco");
     }
-    // TODO: Remove when done testing
-    body.data = body.data.slice(0, 100);
     return body;
   };
 
@@ -58,16 +64,33 @@ class Footer extends React.Component {
     const {
       parentState: { searchFont, previewText, fontSize, gridMode },
     } = this.props;
-    const { data } = this.state;
+    const { loading, data } = this.state;
+
+    // Filter font family data based on search results
     let filteredData = data;
     if (data && data.length && searchFont.length) {
       filteredData = data.filter((f) =>
         f.family.toLowerCase().includes(searchFont.toLowerCase())
       );
-      console.log('DA DATA: ', filteredData);
     }
+
     return (
       <div className="w-100 h-100">
+        {loading && (
+          <div className="p-3 m-3">
+            <h2>Loading Font Families...</h2>
+            <div className="spinner-border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          </div>
+        )}
+        {!loading && (!data || data.length === 0) && (
+          <div className="p-3 m-3">
+            <h2>
+              Sorry, something went wrong. Unable to load any font families!
+            </h2>
+          </div>
+        )}
         {data && data.length && (
           <div className="pb-2 pt-4 px-3 w-100 text-start">
             <small>
@@ -91,7 +114,7 @@ class Footer extends React.Component {
                   )}
                 >
                   <div className="card h-100 p-3 d-flex flex-column align-items-start">
-                    <h5 className="mb-0 pb-3">{f.family}</h5>
+                    <h5 className="mb-0 pb-3 muted">{f.family}</h5>
                     <p className="mb-0 text-start text-break" style={fontStyle}>
                       {previewText || 'Type something...'}
                     </p>
