@@ -25,7 +25,6 @@ app.get('/api/fonts', async (req, res) => {
     const response = await fetch(fetchUrl);
     ({ items: data } = await response.json());
   } catch (error) {
-    console.log('THE ERROR: ', error);
     res.sendStatus(400);
     return;
   }
