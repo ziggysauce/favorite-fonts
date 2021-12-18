@@ -54,7 +54,6 @@ class Footer extends React.Component {
           'Content-Type': 'application/json',
         },
       });
-      console.log('FETCHING API: ', response);
       if (response) {
         body = await response.json();
       }
