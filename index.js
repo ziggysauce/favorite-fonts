@@ -7,13 +7,15 @@ const fetch = require('node-fetch');
 
 const { SERVER_PORT, GOOGLE_FONTS_API_KEY } = process.env;
 const app = express();
+const router = express.Router();
 const port = SERVER_PORT;
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use('/api', async (req, res) => {
+router.get('/api', async (req, res) => {
+  console.log('API ROUTE REACHED');
   const fetchUrl = `https://www.googleapis.com/webfonts/v1/webfonts?key=${GOOGLE_FONTS_API_KEY}&sort=popularity`;
   let data = [];
   try {
@@ -25,6 +27,8 @@ app.use('/api', async (req, res) => {
   }
   res.status(200).json({ data });
 });
+
+app.use(router);
 
 app.use(express.static(path.join(__dirname, 'build')));
 
