@@ -7,11 +7,11 @@ To run this app locally, you'll need a Google Fonts API Key [here](https://devel
 - Create an `.env` file in the root
   - Add the following:
   ```
-  PORT=3001
+  PORT=3000
+  SERVER_PORT=3001
   GOOGLE_FONTS_API_KEY=<YOUR_API_KEY>
   ```
-- Start your local server with `npm run start`
-- Start your local react app with `npm run dev`
+- Start your local app with `npm run dev`
 
 ## References
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).  

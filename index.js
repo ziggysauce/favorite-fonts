@@ -3,9 +3,9 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 const fetch = require('node-fetch');
 
-const { PORT, GOOGLE_FONTS_API_KEY } = process.env;
+const { SERVER_PORT, GOOGLE_FONTS_API_KEY } = process.env;
 const app = express();
-const port = PORT;
+const port = SERVER_PORT;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

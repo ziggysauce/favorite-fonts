@@ -24,9 +24,10 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "node index.js",
-    "dev": "react-scripts start",
+    "serve": "node index.js",
+    "start": "react-scripts start",
     "build": "react-scripts build",
+    "dev": "concurrently \"npm run serve\" \"npm run start\"",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint ."
@@ -51,6 +52,7 @@
     ]
   },
   "devDependencies": {
+    "concurrently": "^6.5.0",
     "eslint-config-airbnb": "^19.0.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-jsx-a11y": "^6.5.1",
