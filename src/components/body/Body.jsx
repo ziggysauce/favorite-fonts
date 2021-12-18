@@ -46,7 +46,7 @@ class Footer extends React.Component {
   callBackendAPI = async () => {
     let body = { data: null };
     try {
-      const response = await fetch('/api/fonts');
+      const response = await fetch('/api');
       if (response) {
         body = await response.json();
       }
