@@ -1,0 +1,86 @@
+.google-font-logo {
+  width: 200px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.muted {
+  color: #5F6368;
+}
+
+.scroll-up-button {
+  transition: 0.3s ease-in-out;
+  position: fixed;
+  right: 2em;
+  bottom: 2em;
+  width: 4em;
+  height: 4em;
+  border-radius: 100%;
+  background-color: #FFFFFF;
+  border: none;
+  outline: none;
+  box-shadow: 0 1px 2px rgba(60, 64, 67 , 0.3), 0 2px 6px 2px rgba(60, 64, 67, 0.15)
+}
+
+.dark-mode {
+  transition: 0.3s ease-in-out;
+  background-color: #202124;
+  color: #E7EAED;
+
+  a,
+  input:focus::-webkit-input-placeholder {
+    transition: 0.3s ease-in-out;
+    color: #87AFF1;
+  }
+
+  a {
+    transition: 0.3s ease-in-out;
+    text-decoration: none;
+  }
+  a:hover {
+    transition: 0.3s ease-in-out;
+    text-decoration: underline;
+    color: #87AFF1;
+  }
+
+  select, input, .fa-icon, .bg-body {
+    transition: 0.3s ease-in-out;
+    background-color: #202124 !important;
+    color: #E7EAED !important;
+  }
+
+  input::-webkit-input-placeholder {
+    transition: 0.3s ease-in-out;
+    color: #E7EAED;
+  }
+
+  .btn-outline-primary {
+    transition: 0.3s ease-in-out;
+    color: #87AFF1;
+    border-color: #87AFF1;
+  }
+  .btn-outline-primary:hover {
+    transition: 0.3s ease-in-out;
+    background-color: rgba(138,180,248,.04);
+    color: #D2E3FC;
+    border-color: #87AFF1;
+  }
+
+  .card {
+    background-color: transparent;
+    color: #E8EAED;
+    border: 1px solid #5f6368;
+    border-radius: 8px;
+  }
+
+  .scroll-up-button {
+    transition: 0.3s ease-in-out;
+    background-color: #3C4043;
+
+    .fa-icon {
+      background-color: #3C4043 !important;
+    }
+  }
+}
