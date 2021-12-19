@@ -5,7 +5,7 @@ const path = require('path');
 require('dotenv').config();
 const fetch = require('node-fetch');
 
-const { SERVER_PORT, GOOGLE_FONTS_API_KEY } = process.env;
+const { NODE_ENV, SERVER_PORT, GOOGLE_FONTS_API_KEY } = process.env;
 const app = express();
 const router = express.Router();
 const port = SERVER_PORT;
@@ -29,16 +29,17 @@ router.get('/api', async (req, res) => {
 
 app.use(router);
 
-app.use(express.static(path.join(__dirname, 'build')));
+if (NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'build')));
+  app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  });
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
-
-// All other GET requests not handled before will return our React app
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
-});
+  // All other GET requests not handled before will return our React app
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+  });
+}
 
 app.listen(port, () => {
   console.log(`App running on port ${port}.`);
