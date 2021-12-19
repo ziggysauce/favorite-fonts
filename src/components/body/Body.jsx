@@ -105,7 +105,7 @@ class Footer extends React.Component {
             </div>
           </div>
         )}
-        {!loading && testText && testText.length && (
+        {testText && testText.length && (
           <div>
             <h2>This is from the server: {testText}</h2>
           </div>
