@@ -11,7 +11,7 @@ class Footer extends React.Component {
       loading: true,
       data: null,
       filteredData: [],
-      testText: '',
+      testText: 'Old text... Boo',
     };
   }
 
