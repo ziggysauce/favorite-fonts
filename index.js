@@ -14,6 +14,10 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+router.get('/api-test', async (req, res) => {
+  res.status(200).json({ data: 'Hello there.' });
+});
+
 router.get('/api', async (req, res) => {
   const fetchUrl = `https://www.googleapis.com/webfonts/v1/webfonts?key=${GOOGLE_FONTS_API_KEY}&sort=popularity`;
   let data = [];
