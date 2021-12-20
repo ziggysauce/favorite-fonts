@@ -17,9 +17,7 @@
     "start": "cd client && react-scripts start --prefix client",
     "build": "cd client && npm install --legacy-peer-deps && npm run build",
     "dev": "concurrently \"npm run serve\" \"npm run start\"",
-    "lint": "eslint .",
-    "build:prod": "NODE_ENV=production webpack -p",
-    "heroku-postbuild": "npm run build:prod"
+    "lint": "eslint ."
   },
   "engines": {
     "node": "12.22.0"
