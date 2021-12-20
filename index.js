@@ -34,9 +34,9 @@ if (NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'client/build')));
 
   // All other GET requests not handled before will return our React app
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-  });
+  // app.get('*', (req, res) => {
+  //   res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  // });
 
   // Catch 404 and forward to error handler
   app.use((req, res, next) => {
