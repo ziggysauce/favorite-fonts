@@ -15,9 +15,12 @@
     "client-install": "npm install --prefix client",
     "serve": "node index.js",
     "start": "cd client && react-scripts start --prefix client",
-    "build": "cd client && react-scripts build",
+    "build": "cd client && npm install && npm run build",
     "dev": "concurrently \"npm run serve\" \"npm run start\"",
     "lint": "eslint ."
+  },
+  "engines": {
+    "node": "12.22.0"
   },
   "browserslist": {
     "production": [
