@@ -3,8 +3,8 @@ import App from './App';
 
 const React = require('react');
 
-test('renders learn react link', () => {
+test('renders Chingu Solo Project footer', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
+  const linkElement = screen.getByText(/Chingu Solo Project/i);
   expect(linkElement).toBeInTheDocument();
 });
