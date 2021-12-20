@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable react/no-unused-state */
 import React from 'react';
+import axios from 'axios';
 import classNames from 'classnames';
 import LazyLoad from 'react-lazyload';
 
@@ -47,29 +48,33 @@ class Footer extends React.Component {
   callBackendAPI = async () => {
     let body = { data: null };
     try {
-      const response = await fetch('/api', {
-        method: 'GET',
-        mode: 'no-cors',
-        credentials: 'same-origin',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      const responseTwo = await fetch('/api-test', {
-        method: 'GET',
-        mode: 'no-cors',
-        credentials: 'same-origin',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+      const response = await axios('/api');
+      // const response = await fetch('/api', {
+      //   method: 'GET',
+      //   mode: 'no-cors',
+      //   credentials: 'same-origin',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      // });
+      const responseTwo = await axios('/api-test');
+      // const responseTwo = await fetch('/api-test', {
+      //   method: 'GET',
+      //   mode: 'no-cors',
+      //   credentials: 'same-origin',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      // });
       if (responseTwo) {
-        const newBody = await responseTwo.json();
+        console.log('HMM: ', responseTwo);
+        const newBody = responseTwo.data;
+        console.log('HMM 2: ', newBody);
         const testText = newBody.data;
         this.setState({ testText });
       }
       if (response) {
-        body = await response.json();
+        body = response.data;
       }
       if (response.status !== 200) {
         throw Error(body.message);
