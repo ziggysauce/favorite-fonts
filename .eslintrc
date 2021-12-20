@@ -6,8 +6,7 @@
     "airbnb/hooks",
     "plugin:jsx-a11y/recommended",
     "plugin:react/recommended",
-    "prettier",
-    "react-app/test"
+    "prettier"
   ],
   "parserOptions": {
     "ecmaFeatures": {
