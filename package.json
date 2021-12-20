@@ -26,8 +26,9 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
+    "client-install": "npm install --prefix client",
     "serve": "node index.js",
-    "start": "react-scripts start",
+    "start": "react-scripts start --prefix client",
     "build": "react-scripts build",
     "dev": "concurrently \"npm run serve\" \"npm run start\"",
     "test": "react-scripts test",

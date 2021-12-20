@@ -41,7 +41,7 @@ if (NODE_ENV === 'production') {
 
   // All other GET requests not handled before will return our React app
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
   });
 }
 
