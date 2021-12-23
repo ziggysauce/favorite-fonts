@@ -12,7 +12,6 @@ class Footer extends React.Component {
       loading: true,
       data: null,
       filteredData: [],
-      testText: 'Old text... Boo',
     };
   }
 
@@ -49,30 +48,6 @@ class Footer extends React.Component {
     let body = { data: null };
     try {
       const response = await axios('/api');
-      // const response = await fetch('/api', {
-      //   method: 'GET',
-      //   mode: 'no-cors',
-      //   credentials: 'same-origin',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      // });
-      const responseTwo = await axios('/api-test');
-      // const responseTwo = await fetch('/api-test', {
-      //   method: 'GET',
-      //   mode: 'no-cors',
-      //   credentials: 'same-origin',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      // });
-      if (responseTwo) {
-        console.log('HMM: ', responseTwo);
-        const newBody = responseTwo.data;
-        console.log('HMM 2: ', newBody);
-        const testText = newBody.data;
-        this.setState({ testText });
-      }
       if (response) {
         body = response.data;
       }
@@ -90,7 +65,7 @@ class Footer extends React.Component {
     const {
       parentState: { searchFont, previewText, fontSize, gridMode },
     } = this.props;
-    const { loading, data, testText } = this.state;
+    const { loading, data } = this.state;
 
     // Filter font family data based on search results
     let filteredData = data;
@@ -108,11 +83,6 @@ class Footer extends React.Component {
             <div className="spinner-border" role="status">
               <span className="visually-hidden">Loading...</span>
             </div>
-          </div>
-        )}
-        {testText && testText.length && (
-          <div>
-            <h2>This is from the server: {testText}</h2>
           </div>
         )}
         {!loading && (!data || data.length === 0) && (
