@@ -31,11 +31,11 @@ app.get('/api', async (req, res) => {
 });
 
 if (NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, 'client/build')));
+  app.use(express.static(path.join(__dirname, './client/build')));
 
   // All other GET requests not handled before will return our React app
   app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+    res.sendFile(path.join(__dirname, './client/build', 'index.html'));
   });
 
   // Catch 404 and forward to error handler
