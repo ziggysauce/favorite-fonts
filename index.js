@@ -13,6 +13,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 
+app.use(express.static(path.join(__dirname, './client/build')));
+
 app.get('/api-test', async (req, res) => {
   res.status(200).json({ data: 'Hello there.' });
 });
@@ -31,8 +33,6 @@ app.get('/api', async (req, res) => {
 });
 
 if (NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, './client/build')));
-
   // All other GET requests not handled before will return our React app
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, './client/build', 'index.html'));
