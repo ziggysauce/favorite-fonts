@@ -13,8 +13,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 
-app.use(express.static(path.join(__dirname, './client/build')));
-
 app.get('/api-test', async (req, res) => {
   res.status(200).json({ data: 'Hello there.' });
 });
@@ -34,23 +32,24 @@ app.get('/api', async (req, res) => {
 
 if (NODE_ENV === 'production') {
   // All other GET requests not handled before will return our React app
+  app.use(express.static('client/build'));
   app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, './client/build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 
   // Catch 404 and forward to error handler
-  app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Credentials', true);
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header(
-      'Access-Control-Allow-Headers',
-      'Origin, X-Requested-With, Content-Type, Accept'
-    );
-    const err = new Error('Not Found');
-    err.status = 404;
-    next(err);
-  });
+  // app.use((req, res, next) => {
+  //   res.header('Access-Control-Allow-Origin', '*');
+  //   res.header('Access-Control-Allow-Credentials', true);
+  //   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  //   res.header(
+  //     'Access-Control-Allow-Headers',
+  //     'Origin, X-Requested-With, Content-Type, Accept'
+  //   );
+  //   const err = new Error('Not Found');
+  //   err.status = 404;
+  //   next(err);
+  // });
 }
 
 app.listen(port, () => {
