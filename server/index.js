@@ -14,6 +14,10 @@ app.listen(process.env.PORT || 3000);
 
 console.log(`API server is listening on port:${PORT || 3000}`);
 
+/**
+ * This is the old iteration of the code I had.
+ * Keeping it here simply for reference
+ */
 // const express = require('express');
 // const bodyParser = require('body-parser');
 // const cors = require('cors');
