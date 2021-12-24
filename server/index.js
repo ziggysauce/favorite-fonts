@@ -4,15 +4,15 @@ const route = require('./route');
 require('dotenv').config();
 
 const app = express();
-const { SERVER_PORT = 3001 } = process.env;
+const { PORT } = process.env;
 
 app.use(express.static(path.resolve(__dirname, '../client/build')));
 
 route(app);
 
-app.listen(SERVER_PORT);
+app.listen(process.env.PORT || 3000);
 
-console.log(`API server is listening on port:${SERVER_PORT}`);
+console.log(`API server is listening on port:${PORT || 3000}`);
 
 // const express = require('express');
 // const bodyParser = require('body-parser');
