@@ -32,3 +32,6 @@ To run this app locally, you'll need a Google Fonts API Key [here](https://devel
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).  
 See [README.cra.md](https://github.com/ziggysauce/favorite-fonts/blob/main/client/README.cra.md).  
 Original Chingu Solo Project [REPO](https://github.com/chingu-voyages/soloproject-tier3-favfonts).  
+
+## Notes
+- I didn't put a very strong effort into the mobile view... so there's that 😬
